@@ -1,0 +1,4 @@
+GET https://phonebook-backend-oaq2.onrender.com
+
+Content-Type: application/json
+

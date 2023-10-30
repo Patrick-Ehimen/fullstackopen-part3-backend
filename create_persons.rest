@@ -1,7 +1,7 @@
-POST http://localhost:3001/api/persons
+POST https://phonebook-backend-oaq2.onrender.com
 Content-Type: application/json
 
 {
-    "name": "Cool huh!?",
+    "name": "0xCool huh testing Testing!?",
     "number": "08139777729"
 }
