@@ -12,7 +12,6 @@ const password = process.argv[2];
 
 // Constructing the connection string URL
 const url = `mongodb+srv://patrickehimen22:${password}@cluster1.iydofkb.mongodb.net/?retryWrites=true&w=majority`;
-
 // 5dYBvMQ14Q0UxGJQ
 
 // Configuring mongoose
@@ -30,39 +29,23 @@ const phonebookSchema = new mongoose.Schema({
 // Creating a model from the phonebook entry schema
 const PhonebookEntry = mongoose.model("PhonebookEntry", phonebookSchema);
 
+const name = process.argv[3];
+const number = process.argv[4];
+
 const entry = new PhonebookEntry({
-  name: "Patrick",
-  number: "123",
+  name: name,
+  number: number,
 });
 
-entry.save().then((result) => {
-  console.log("Entry saved!");
+entry.save().then(() => {
+  console.log(`Added ${name} number ${number} to phonebook`);
   mongoose.connection.close();
 });
 
-// Adding an entry to the phonebook
-// if (process.argv.length === 5) {
-//   const name = process.argv[3];
-//   const number = process.argv[4];
+PhonebookEntry.find({}).then((result) => {
+  result.forEach((entry) => {
+    console.log(`${entry.name} ${entry.number}`);
+  });
 
-//   const entry = new PhonebookEntry({
-//     name,
-//     number,
-//   });
-
-//   entry.save().then((result) => {
-//     console.log(`Added ${name} number ${number} to the phonebook.`);
-//     mongoose.connection.close();
-//   });
-// }
-
-// // Listing all entries in the phonebook
-// if (process.argv.length === 3) {
-//   PhonebookEntry.find({}).then((entries) => {
-//     console.log("Phonebook entries:");
-//     entries.forEach((entry) => {
-//       console.log(`${entry.name} ${entry.number}`);
-//     });
-//     mongoose.connection.close();
-//   });
-// }
+  mongoose.connection.close();
+});
