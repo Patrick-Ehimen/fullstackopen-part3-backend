@@ -9,10 +9,10 @@ if (process.argv.length < 3) {
 
 // Capturing password from command-line arguments
 const password = process.argv[2];
+// 4g7NQYlZLPof083j
 
 // Constructing the connection string URL
-const url = `mongodb+srv://patrickehimen22:${password}@cluster1.iydofkb.mongodb.net/phonebook?retryWrites=true&w=majority`;
-// 5dYBvMQ14Q0UxGJQ
+const url = `mongodb+srv://patrickehimen22:${password}@cluster0.1b9flb6.mongodb.net/phonebook?retryWrites=true&w=majority`;
 
 // Configuring mongoose
 mongoose.set("strictQuery", false);
